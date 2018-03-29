@@ -86,6 +86,7 @@ def kMeans(data,k,deep):
     listK=randomK(data,k)
     clusterData(data,listK)
     distNewK(data,k,deep,0)
+    return data
 
 def clusterData(data,listK):
     for l in data:
