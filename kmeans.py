@@ -21,8 +21,8 @@ class Coordinate:
     def __init__(self,x,y,k,flag):
         self.x=x
         self.y=y
-        self.k=k
-        self.flag=flag #1，聚类中心
+        self.k=k #聚类类型
+        self.flag=flag #1，聚类中心标识
 
     def __init__(self,x,y):
         self.x=x
@@ -42,16 +42,15 @@ def createCoordinateList():
     list=[]
     for num in range(0,30):
         list.append(Coordinate(num,getRandom()))
+
+    '''展示坐标信息'''
+    list.sort(cmp=None, key=lambda x:x.x, reverse=True)
+    for obj in list:
+        print ' '*(obj.y-1)+'*'
+
+    print ''
+    print '='*110
     return list
-
-'''展示坐标信息'''
-list=createCoordinateList()
-list.sort(cmp=None, key=lambda x:x.x, reverse=True)
-for obj in list:
-    print ' '*(obj.y-1)+'*'
-
-print ''
-print '='*110
 
 #print list.count('90')
 
@@ -211,7 +210,7 @@ def showData(data,k):
 
 def main():
     # showData(list,3,5)
-    kMeans(list,4,50)
+    kMeans(createCoordinateList(),4,50)
 
 if __name__ == '__main__':
     main()
